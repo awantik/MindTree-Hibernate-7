@@ -1,0 +1,35 @@
+First Level Cache - Enabled by default & works in session scope
+Second Level Cache - Available globally in session factory scope
+
+Second Level Cache
+1. Whenever we are trying to load an entity, first check happens to first level cache.
+2. Only if data is not present there in first level, lookup happens in second level cache.
+3. If second level cache has cached entity, it is returned as a result of load method.
+4. Before returning the entity, bring data from second level cache to first level cache.
+5. If entity is not found in first level or second level cache, no option but to access database.
+6. Entity is bought to both the caches before returning the load method. 
+7. Changes to database directly has no way to update second level cache.
+8. Based on Cache Config XML, timeouts will decide life of cache
+
+
+ehCache
+1. Terracota ehCache is popular open source
+2. It can be used as standalone second level cache.
+3. This can be configured for clustering
+
+Configuration of ehCache
+1. Configure Hibernate for Second Level Cache
+2. Specify second level cache
+
+Configuring entity classes
+1. @Cache(usage=CacheConcurrencyStrategy.*)
+Caching strategies - 
+   none - No Caching will happen
+   read-only - If application is read only & not modify, read only cache will be used
+   read-write - caching support read write operations
+   nonstrict-read-write - Occational need to update data, fast & optimized for minimal write operation
+   transactional - Concurrent caches where both reading & writing entities are aware of the changes, eg JBoss TreeCache
+
+
+
+ 

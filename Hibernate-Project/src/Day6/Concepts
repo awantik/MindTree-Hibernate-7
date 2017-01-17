@@ -1,0 +1,2 @@
+HQL - Hibernate Query Language, object oriented query language similar to SQL.
+HQL doesn't work on table & coloumns but persistent object
